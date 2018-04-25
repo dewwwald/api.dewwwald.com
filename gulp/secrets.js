@@ -1,5 +1,5 @@
 const secrets = {
-    domain: '34.192.227.121',
+    domain: 'dewwwald.com',
     username: 'ubuntu'
 }
 module.exports = secrets;
