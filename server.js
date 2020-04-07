@@ -7,14 +7,17 @@ const express = require("express"),
 
 app.use(bodyParser.json());
 
-app.post("/mail/contact", function (request, response) {
+app.post("/api/mail/contact", function (request, response) {
   var ContactMail = require("./mail/contact.js");
   var data = request.body;
   ContactMail.send(data.message);
   response.send("Email sent");
 });
 
+app.use(express.static("public/dist"));
+
 app.get("*", (req, res) => {
+  console.log(path.resolve("public/dist/" + req.path).replace("//", "/"));
   if (regForFile.test(req.path)) {
     res.sendFile(path.resolve("public/dist/" + req.path).replace("//", "/"));
   } else {
